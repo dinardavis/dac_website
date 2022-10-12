@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background-primary: 255, 255, 255;
+  --background-secondary: 0, 66, 129;
+  --background-accent: 124, 128, 154;
+  --fontcolor-main: #004281;
+  --fontcolor-secondary: #f2f2f3;
+  --fontcolor-accent: rgb(124,128,154);
+  --main-transition: all .1s ease-in-out;
+  --box-shadow1: rgba(0, 0, 0, 0.4) 3px 3px 8px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  overscroll-behavior-y: none;
+}
+
+.main-container {
+  height: 4000px;
+}
+
+.main-nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(var(--background-primary));
+  padding: 10px 25px;
+  z-index: 100;
+  width: 100%;
+  transition: top 0.3s;
+}
+
+.no-background {
+  background-color: rgba(var(--background-primary), 0);
+}
+
+.nav-logo {
+  cursor: pointer;
+  width: 65px;
+}
+
+.nav-shadow {
+  background-color: rgba(var(--background-primary), 0.9);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-link {
+  margin-left: 20px;
+}
+
+.nav-link a {
+  cursor: pointer;
+  font-size: .9em;
+  color: var(--fontcolor-main);
+  text-decoration: none;
+  text-transform: uppercase;
+
+}
+
+
+
