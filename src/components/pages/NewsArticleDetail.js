@@ -5,7 +5,7 @@ import newsData from "../../Data/newsData";
 import BackButton from "../BackButton";
 import singlePageTop from "../../assets/imgs/graphics/singlepage_top.png"
 import singlePageMiddle from "../../assets/imgs/graphics/singlepage_middle.png"
-import articleVideo from '../../assets/imgs/newsarticle_videos/15th_video.mp4'
+
 
 export default function NewsArticleDetail() {
   const params = useParams();
@@ -22,7 +22,8 @@ export default function NewsArticleDetail() {
       if(currentArticle[0].video) {
         const articleBody = document.querySelector('.article-paragraph:nth-of-type(2)')
         let article_video = document.createElement("video")
-        article_video.src = articleVideo;
+        article_video.src = `.${currentArticle[0].video}`;
+        article_video.alt = `.${currentArticle[0].video_desc}`;
         article_video.autoplay = false;
         article_video.controls = true;
         article_video.muted = false;
@@ -30,6 +31,17 @@ export default function NewsArticleDetail() {
         article_video.height=300;
         article_video.classList.add("article-video", "img-float-left")
         articleBody.after(article_video)
+      }
+    }
+    if(currentArticle){ 
+      if(currentArticle[0].second_image) {
+        const articleBody = document.querySelector('.article-paragraph:nth-of-type(1)')
+        let article_second_image = document.createElement("img")
+        article_second_image.src = `.${currentArticle[0].second_image}`
+        article_second_image.alt = `${currentArticle[0].second_img_desc}`
+        article_second_image.height=350;
+        article_second_image.classList.add("second-article-image", "img-float-left")
+        articleBody.after(article_second_image)
       }
     }
   }, [currentArticle])
@@ -45,7 +57,9 @@ export default function NewsArticleDetail() {
           <div className="article-detail-container">
             <BackButton />
             <div className="article-detail-content" >
-              <div className="section-header article-detail-header">{currentArticle[0].title}</div>
+              <div className="section-header article-detail-header">{currentArticle[0].title}
+              <p className="article-detail-date">{currentArticle[0].date}</p>
+            </div>
               <img className="article-detail-img" src={`.${currentArticle[0].img}`} alt={currentArticle[0].imgDesc} />
             </div>
            
@@ -60,7 +74,7 @@ export default function NewsArticleDetail() {
               <p className="copy article-paragraph" key={index}>{`${item}`}</p>
             ))}
             {currentArticle[0].article_link_copy ? 
-              <p className="copy">{currentArticle[0].article_link_copy} <Link to={currentArticle[0].article_link} className="link-blue-text" target="_blank">here</Link>.</p>
+              <p className="copy">{currentArticle[0].article_link_copy} <Link to={currentArticle[0].article_link} className="link-blue-text" target="_blank">{currentArticle[0].article_link_last_word}</Link>.</p>
             : ""}
             </div>
           </div>
